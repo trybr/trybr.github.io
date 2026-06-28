@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { siteConfig, stats } from "@/lib/data";
 
 import Image from "next/image";
-import FallbackVideo from "@/components/FallbackVideo";
+import AnimatedMedia from "@/components/AnimatedMedia";
 
 export default function HeroSection() {
   const [displayed, setDisplayed] = useState("");
@@ -38,15 +38,15 @@ export default function HeroSection() {
         />
       </h1>
 
-      <div className="relative mt-5 w-32 h-32 rounded-2xl bg-gradient-to-br from-[#6C8CFF] via-[#5BE08C] to-[#6C8CFF] p-[1px]">
+      <div className="relative mt-5 w-[150px] w-[150px] rounded-2xl bg-gradient-to-br from-[#6C8CFF] via-[#5BE08C] to-[#6C8CFF] p-[1px]">
         <div className="relative w-full h-full rounded-2xl bg-[#0A0E14] flex items-center justify-center overflow-hidden">
-          <FallbackVideo
-            src="/images/photo-moshed.webm"
+          <AnimatedMedia
+            webmSrc="/images/photo-moshed.webm"
             fallbackImage="/images/photo.jpg"
+            className="w-full max-w-md rounded-xl"
             autoPlay
             loop
             muted
-            className="w-full max-w-md"
           />
         </div>
       </div>
