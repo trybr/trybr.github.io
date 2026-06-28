@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/data";
-import AnimatedCat from "@/components/AnimatedCat";
 
 export const metadata: Metadata = {
   title: `${siteConfig.nameEn} — ${siteConfig.role}`,
@@ -23,10 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body>
-        {children}
-        {/* <AnimatedCat /> */}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
