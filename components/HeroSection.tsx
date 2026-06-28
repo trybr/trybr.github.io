@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { siteConfig, stats } from "@/lib/data";
 
-import Image from "next/image";
 import AnimatedMedia from "@/components/AnimatedMedia";
 
 export default function HeroSection() {
@@ -44,9 +43,6 @@ export default function HeroSection() {
             webmSrc="/images/photo-moshed.webm"
             fallbackImage="/images/photo.jpg"
             className="w-full max-w-md rounded-xl"
-            autoPlay
-            loop
-            muted
           />
         </div>
       </div>
