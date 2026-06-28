@@ -213,12 +213,12 @@ export const stackGroups = [
   },
   {
     title: "Инструменты",
-    items: ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Storybook"],
+    items: ["Figma", "Storybook"],
     highlight: false,
   },
   {
     title: "CMS",
-    items: ["Bitrix", "WordPress", "Tilda", "ModX", "OpenCart", "Headless CMS"],
+    items: ["Bitrix", "WordPress", "Tilda", "Headless CMS"],
     highlight: false,
   },
 ];
