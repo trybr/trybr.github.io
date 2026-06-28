@@ -57,14 +57,14 @@ export default function ContactSection() {
             </div>
             <div>
               <p
-                className="text-[9px] text-muted uppercase tracking-[0.6px]"
+                className="text-[12px] text-muted uppercase tracking-[0.6px]"
                 style={{ fontFamily: "var(--font-mono)" }}
               >
                 {item.label}
                 {item.preferred && <span className="ml-1.5 text-accent"></span>}
               </p>
               <p
-                className="text-[13px] text-fore mt-1"
+                className="text-[14px] text-fore mt-1"
                 style={{ fontFamily: "var(--font-grotesk)" }}
               >
                 {item.value}

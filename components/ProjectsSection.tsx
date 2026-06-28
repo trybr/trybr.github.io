@@ -31,14 +31,14 @@ export default function ProjectsSection() {
             )}
             <div className="flex items-start justify-between gap-3 mb-2.5">
               <h3
-                className="text-[15px] font-semibold text-fore group-hover:text-accent transition-colors duration-200"
+                className="text-[16px] font-semibold text-fore group-hover:text-accent transition-colors duration-200"
                 style={{ fontFamily: "var(--font-grotesk)" }}
               >
                 {project.name}
               </h3>
-              <TypeBadge type={project.type} label={project.typeLabel} />
+              {/* <TypeBadge type={project.type} label={project.typeLabel} /> */}
             </div>
-            <p className="text-[13px] text-muted leading-[1.65]">
+            <p className="text-[14px] text-muted leading-[1.65]">
               {project.desc}
             </p>
             {project.url && (
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-3 text-[11px] text-accent hover:underline"
+                className="inline-flex items-center gap-1.5 mt-3 text-[14px] text-accent hover:underline"
                 style={{ fontFamily: "var(--font-mono)" }}
               >
                 Посмотреть →
@@ -63,7 +63,7 @@ function TypeBadge({ type, label }: { type: ProjectType; label: string }) {
   return (
     <span
       className={clsx(
-        "text-[9px] px-2 py-1 rounded border whitespace-nowrap flex-shrink-0",
+        "text-[12px] px-2 py-1 rounded border whitespace-nowrap flex-shrink-0",
         type === "oss" && "border-green text-green",
         type === "concept" && "border-muted text-muted",
         type === "commercial" && "border-accent text-accent"
