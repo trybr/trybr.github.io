@@ -31,13 +31,17 @@ const contactItems = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" aria-label="Контакты" className="scroll-mt-6">
+    <section
+      id="contact"
+      aria-label="Контакты"
+      className="scroll-mt-6 max-w-2xl"
+    >
       <SectionLabel>Контакты</SectionLabel>
-      <p className="text-sm text-muted mb-7 max-w-[500px] leading-[1.75]">
+      <p className="text-base text-muted mb-7 max-w-[500px] leading-[1.75]">
         Открыт к предложениям о работе, интересным проектам и техническим
         дискуссиям.
       </p>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {contactItems.map((item) => (
           <a
             key={item.label}

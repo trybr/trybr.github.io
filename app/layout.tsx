@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     description: siteConfig.bio,
     type: "website",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +25,7 @@ export default function RootLayout({
     <html lang="ru">
       <body>
         {children}
-        <AnimatedCat />
+        {/* <AnimatedCat /> */}
       </body>
     </html>
   );

@@ -127,7 +127,6 @@ credentials/
 /database/
 
 # --- Файлы состояния и зависимостей ---
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 poetry.lock

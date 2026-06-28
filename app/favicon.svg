@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#18181b"/>
+  <text
+    x="16"
+    y="18"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'SF Mono', 'Fira Code', 'Cascadia Code', monospace"
+    font-size="18"
+    font-weight="700"
+    fill="#ffffff"
+  >D</text>
+  <rect x="9" y="26" width="14" height="2.5" rx="1.25" fill="#60a5fa"/>
+</svg>

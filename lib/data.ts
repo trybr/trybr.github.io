@@ -3,8 +3,8 @@ export const siteConfig = {
   nameEn: "Dmitry Borodin",
   role: "Senior Frontend Developer",
   headline: "Строю продукты,\nкоторые работают.",
-  bio: "7+ лет в коммерческой разработке. Создаю масштабируемые продукты на React, TypeScript и Next.js — в fintech, dating и B2B.",
-  cms: "Также работаю с популярными CMS (Bitrix, WordPress, Tilda, ModX) и PHP в целом, что позволяет гибко решать задачи любой сложности.",
+  bio: "7+ лет в коммерческой разработке. Создаю масштабируемые продукты на React, TypeScript и Next.js — в fintech, dating, B2B и других сферах.",
+  cms: "Также работаю с популярными CMS (Bitrix, WordPress, Tilda, ModX). Да и с PHP в целом, что позволяет гибко решать задачи любой сложности.",
   additional:
     "Умею доводить сложные проекты до стабильного работающего результата.",
   available: true,
@@ -21,7 +21,7 @@ export const siteConfig = {
 export const stats = [
   { num: "7+", label: "лет опыта" },
   { num: "100+", label: "проектов" },
-  { num: "4", label: "направления" },
+  { num: "20+", label: "технологий" },
 ];
 
 export const coreTags = ["React", "TypeScript", "Next.js"];
@@ -216,11 +216,26 @@ export const stackGroups = [
     items: ["Figma", "Adobe Photoshop", "Adobe Illustrator", "Storybook"],
     highlight: false,
   },
+  {
+    title: "CMS",
+    items: ["Bitrix", "WordPress", "Tilda", "ModX", "OpenCart", "Headless CMS"],
+    highlight: false,
+  },
 ];
 
 export type ProjectType = "oss" | "concept" | "commercial";
 
-export const projects = [
+export type Project = {
+  name: string;
+  type: ProjectType;
+  typeLabel: string;
+  desc: string;
+  tags?: string[];
+  url?: string;
+  image?: string;
+};
+
+export const projects: Project[] = [
   // {
   //   name: "Cover Letter Generator",
   //   type: "oss" as ProjectType,
@@ -237,12 +252,123 @@ export const projects = [
   //   tags: ["Chrome Extensions", "JavaScript", "DOM API"],
   //   url: "",
   // },
+  // {
+  //   name: "Setka Autofollower",
+  //   type: "oss" as ProjectType,
+  //   typeLabel: "Open Source",
+  //   desc: "Автоматизация подписок на профессиональной сети setka.ru. Рандомизированные задержки для имитации естественного поведения пользователя.",
+  //   tags: ["Chrome Extensions", "JavaScript", "DOM API"],
+  //   url: "",
+  // },
   {
-    name: "Setka Autofollower",
-    type: "oss" as ProjectType,
-    typeLabel: "Open Source",
-    desc: "Автоматизация подписок на профессиональной сети setka.ru. Рандомизированные задержки для имитации естественного поведения пользователя.",
-    tags: ["Chrome Extensions", "JavaScript", "DOM API"],
-    url: "",
+    name: "Twinby",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт знакомств на основе научного подхода, где пользователи проходят психологический тест для поиска совместимого партнера. Процент совместимости отображается прямо в ленте, что делает процесс выбора осмысленным и увлекательным.",
+    url: "https://twinby.ru/",
+    image: "/images/projects/twinby.png",
+  },
+  {
+    name: "WISP",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Турнирная платформа для киберспортсменов с AI-мониторингом, низким пингом и интеграцией блокчейн-технологий. Позволяет проводить матчи, участвовать в турнирах и выводить заработанные средства.",
+    url: "https://wispgame.by/",
+    image: "/images/projects/wisp.webp",
+  },
+  {
+    name: "B2C",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Маркетплейс в сфере красоты, который помогает клиентам находить мастеров и записываться на услуги. Основная ценность — сокращение пути к нужному специалисту с 6 до 3 шагов и внедрение системы рейтингов для повышения доверия.",
+    url: "https://b2c.by/",
+    image: "/images/projects/b2c.jpg",
+  },
+  {
+    name: "Unlimco",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Fintech-продукт для эквайринга, массовых выплат и антифрод-защиты, с акцентом на безопасность и стабильность. Включает личный кабинет мерчантов с аналитикой, платежными методами и формами выплат, а также кроссплатформенное мобильное приложение.",
+    url: "https://www.unlimco.io/",
+    image: "/images/projects/unlimco.png",
+  },
+  {
+    name: "CityLife",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Первый клиентский кэшбэк-сервис, предоставляющий скидки и возврат до 60% в заведениях города, интернет-магазинах, на туры, авиабилеты, отели и авто. Универсальная дисконтная карта действует в 27 странах мира, объединяя выгоду и удобство для пользователей.",
+    image: "/images/projects/cl.webp",
+  },
+  {
+    name: "America Study",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Платформа для помощи в поступлении в американские вузы. Предоставляет информацию об учебных заведениях, программах и процессе подачи документов для русскоязычных студентов.",
+    url: "https://americastudy.ru/",
+    image: "/images/projects/america.jpg",
+  },
+  {
+    name: "Детско-юношеская студия «Камерный театр»",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт театральной студии с информацией о спектаклях, расписании занятий и педагогическом составе. Служит точкой входа для родителей, желающих записать ребенка, и помогает продвигать творческие проекты студии.",
+    url: "https://kamerteatr.ru/",
+    image: "/images/projects/kt.jpeg",
+  },
+  {
+    name: "Мебельный центр на Чичерина",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Корпоративный сайт мебельного центра, представляющий каталог товаров и контактную информацию. Основная функция — привлечение клиентов и демонстрация ассортимента с акцентом на удобный интерфейс.",
+    url: "https://mebelcentr74.ru/",
+    image: "/images/projects/mc.jpg",
+  },
+  {
+    name: "Hight Agency",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт креативного агентства, демонстрирующий портфолио и спектр услуг в сфере дизайна и маркетинга. Служит витриной для привлечения новых клиентов через визуально привлекательный и функциональный интерфейс.",
+    url: "https://hight.agency/",
+    image: "/images/projects/ha.png",
+  },
+  {
+    name: "СПК-Чимолаи",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт производственной компании, представляющий ее продукцию и услуги. Информирует партнеров и клиентов о возможностях сотрудничества, делая акцент на надежности и опыте.",
+    url: "https://jvk-cimolai.ru/",
+    image: "/images/projects/konar.webp",
+  },
+  {
+    name: "Конаково",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт аэроклуба, предоставляющий информацию о полетах, обучении и услугах. Позволяет пользователям узнавать о мероприятиях и записываться на полеты, сочетая справочную функцию с элементами бронирования.",
+    url: "https://konakovo.aero/",
+    image: "/images/projects/konakovo.jpeg",
+  },
+  {
+    name: "Смарт",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт производителя снеков (семечки, арахис, кукуруза) с акцентом на натуральный состав и качество продукции. Основная задача — презентация бренда и товаров конечному потребителю через яркий и запоминающийся дизайн.",
+    url: "https://www.smart174.ru/",
+    image: "/images/projects/djinn.png",
+  },
+  {
+    name: "Cascadia Lines",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Логистическая компания, оказывающая услуги по транспортировке грузов из Китая в Россию с фокусом на надежность и скорость. Сайт предоставляет информацию об услугах, контакты и возможность запроса консультации для бизнес-клиентов.",
+    url: "https://casdil.ru/",
+    image: "/images/projects/cascadia.jpg",
+  },
+  {
+    name: "Реклама.фильм",
+    type: "commercial",
+    typeLabel: "Коммерческий",
+    desc: "Сайт производственной студии, специализирующейся на создании рекламных видеороликов. Презентует портфолио, услуги и примеры работ для привлечения заказчиков из сферы рекламы и маркетинга.",
+    url: "https://www.reklamafilm.ru/",
+    image: "/images/projects/rf.png",
   },
 ];

@@ -4,9 +4,13 @@ import clsx from "clsx";
 
 export default function StackSection() {
   return (
-    <section id="stack" aria-label="Технический стек" className="scroll-mt-6">
+    <section
+      id="stack"
+      aria-label="Технический стек"
+      className="scroll-mt-6 max-w-2xl"
+    >
       <SectionLabel>Технический стек</SectionLabel>
-      <p className="text-sm text-muted mb-7 max-w-[500px] leading-[1.75]">
+      <p className="text-base text-muted mb-7 max-w-[500px] leading-[1.75]">
         Основа — React / TypeScript / Next.js. Всё остальное применял в реальных
         проектах.
       </p>
@@ -14,7 +18,7 @@ export default function StackSection() {
         {stackGroups.map((group) => (
           <div key={group.title}>
             <p
-              className="text-[13px] font-semibold text-muted uppercase tracking-[0.8px] mb-3.5 mt-8"
+              className="text-[12px] text-muted uppercase tracking-[0.8px] mb-3.5 mt-8"
               style={{ fontFamily: "var(--font-grotesk)" }}
             >
               {group.title}
