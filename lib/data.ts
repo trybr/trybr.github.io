@@ -4,7 +4,7 @@ export const siteConfig = {
   role: "Senior Frontend Developer",
   headline: "Строю продукты,\nкоторые работают.",
   bio: "7+ лет в коммерческой разработке. Создаю масштабируемые продукты на React, TypeScript и Next.js — в fintech, dating, B2B и других сферах.",
-  cms: "Также работаю с популярными CMS (Bitrix, WordPress, Tilda, ModX). Да и с PHP в целом, что позволяет гибко решать задачи любой сложности.",
+  cms: "При необходимости закрываю задачи на бэкенде (Node.js, PHP) и работаю с CMS (Bitrix, WordPress) — без привлечения дополнительных специалистов.",
   additional:
     "Умею доводить сложные проекты до стабильного работающего результата.",
   available: true,
