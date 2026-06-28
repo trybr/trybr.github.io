@@ -266,7 +266,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт знакомств на основе научного подхода, где пользователи проходят психологический тест для поиска совместимого партнера. Процент совместимости отображается прямо в ленте, что делает процесс выбора осмысленным и увлекательным.",
     url: "https://twinby.ru/",
-    image: "/images/projects/twinby.png",
+    image: "/images/projects/twinby.webp",
   },
   {
     name: "WISP",
@@ -282,7 +282,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Маркетплейс в сфере красоты, который помогает клиентам находить мастеров и записываться на услуги. Основная ценность — сокращение пути к нужному специалисту с 6 до 3 шагов и внедрение системы рейтингов для повышения доверия.",
     url: "https://b2c.by/",
-    image: "/images/projects/b2c.jpg",
+    image: "/images/projects/b2c.webp",
   },
   {
     name: "Unlimco",
@@ -290,7 +290,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Fintech-продукт для эквайринга, массовых выплат и антифрод-защиты, с акцентом на безопасность и стабильность. Включает личный кабинет мерчантов с аналитикой, платежными методами и формами выплат, а также кроссплатформенное мобильное приложение.",
     url: "https://www.unlimco.io/",
-    image: "/images/projects/unlimco.png",
+    image: "/images/projects/unlimco.webp",
   },
   {
     name: "Фасоль",
@@ -298,14 +298,14 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Прогрессивное веб-приложение (PWA) для магазина продуктов. Офлайн-режим, push-уведомления, быстрая корзина и адаптивный интерфейс — всё, чтобы заказ продуктов занимал минуты, а не часы.",
     url: "https://myfasol.ru/",
-    image: "/images/projects/fasol.jpg",
+    image: "/images/projects/fasol.webp",
   },
   {
     name: "PR MART",
     type: "commercial",
     typeLabel: "Коммерческий",
     desc: "Сайт рекламного агентства с портфолио вирусных проектов и полезным блогом. Показывает, что крутая реклама — это не магия, а системная работа.",
-    image: "/images/projects/pr-mart.png",
+    image: "/images/projects/pr-mart.webp",
   },
   {
     name: "America Study",
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Платформа для помощи в поступлении в американские вузы. Предоставляет информацию об учебных заведениях, программах и процессе подачи документов для русскоязычных студентов.",
     url: "https://americastudy.ru/",
-    image: "/images/projects/america.jpg",
+    image: "/images/projects/america.webp",
   },
   {
     name: "CityLife",
@@ -328,7 +328,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт театральной студии с информацией о спектаклях, расписании занятий и педагогическом составе. Служит точкой входа для родителей, желающих записать ребенка, и помогает продвигать творческие проекты студии.",
     url: "https://kamerteatr.ru/",
-    image: "/images/projects/kt.jpeg",
+    image: "/images/projects/kt.webp",
   },
   {
     name: "Мебельный центр на Чичерина",
@@ -336,7 +336,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Корпоративный сайт мебельного центра, представляющий каталог товаров и контактную информацию. Основная функция — привлечение клиентов и демонстрация ассортимента с акцентом на удобный интерфейс.",
     url: "https://mebelcentr74.ru/",
-    image: "/images/projects/mc.jpg",
+    image: "/images/projects/mc.webp",
   },
   {
     name: "Hight Agency",
@@ -344,7 +344,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт креативного агентства, демонстрирующий портфолио и спектр услуг в сфере дизайна и маркетинга. Служит витриной для привлечения новых клиентов через визуально привлекательный и функциональный интерфейс.",
     url: "https://hight.agency/",
-    image: "/images/projects/ha.png",
+    image: "/images/projects/ha.webp",
   },
   {
     name: "СПК-Чимолаи",
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт аэроклуба, предоставляющий информацию о полетах, обучении и услугах. Позволяет пользователям узнавать о мероприятиях и записываться на полеты, сочетая справочную функцию с элементами бронирования.",
     url: "https://konakovo.aero/",
-    image: "/images/projects/konakovo.jpeg",
+    image: "/images/projects/konakovo.webp",
   },
   {
     name: "Смарт",
@@ -368,7 +368,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт производителя снеков (семечки, арахис, кукуруза) с акцентом на натуральный состав и качество продукции. Основная задача — презентация бренда и товаров конечному потребителю через яркий и запоминающийся дизайн.",
     url: "https://www.smart174.ru/",
-    image: "/images/projects/djinn.png",
+    image: "/images/projects/djinn.webp",
   },
   {
     name: "Cascadia Lines",
@@ -376,7 +376,7 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Логистическая компания, оказывающая услуги по транспортировке грузов из Китая в Россию с фокусом на надежность и скорость. Сайт предоставляет информацию об услугах, контакты и возможность запроса консультации для бизнес-клиентов.",
     url: "https://casdil.ru/",
-    image: "/images/projects/cascadia.jpg",
+    image: "/images/projects/cascadia.webp",
   },
   {
     name: "Реклама.фильм",
@@ -384,6 +384,6 @@ export const projects: Project[] = [
     typeLabel: "Коммерческий",
     desc: "Сайт производственной студии, специализирующейся на создании рекламных видеороликов. Презентует портфолио, услуги и примеры работ для привлечения заказчиков из сферы рекламы и маркетинга.",
     url: "https://www.reklamafilm.ru/",
-    image: "/images/projects/rf.png",
+    image: "/images/projects/rf.webp",
   },
 ];
