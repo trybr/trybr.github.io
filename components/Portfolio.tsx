@@ -22,7 +22,7 @@ export default function Portfolio() {
         </div>
 
         {/* One-page content */}
-        <main className="flex-1 px-8 md:px-14 py-12 md:py-16">
+        <main className="flex-1 px-8 md:px-14 py-12 md:py-16 pb-32">
           <div className="space-y-24">
             <HeroSection />
             <ExperienceSection />

@@ -1,9 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import { projects, type ProjectType } from "@/lib/data";
+import { projects } from "@/lib/data";
 import { SectionLabel } from "./ExperienceSection";
-import clsx from "clsx";
+import { ExpandToggle } from "./ExpandToggle";
+
+const VISIBLE_COUNT = 6;
 
 export default function ProjectsSection() {
+  const [expanded, setExpanded] = useState(false);
+  const hasMore = projects.length > VISIBLE_COUNT;
+  const visibleProjects = expanded
+    ? projects
+    : projects.slice(0, VISIBLE_COUNT);
+
   return (
     <section id="projects" aria-label="Проекты" className="scroll-mt-6">
       <SectionLabel>Проекты</SectionLabel>
@@ -13,7 +24,7 @@ export default function ProjectsSection() {
         которые показывают, как я мыслю, пишу код и решаю задачи.
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <article
             key={project.name}
             className="bg-surface border border-subtle rounded-xl px-6 py-5 transition-colors duration-200 hover:border-accent group"
@@ -36,7 +47,6 @@ export default function ProjectsSection() {
               >
                 {project.name}
               </h3>
-              {/* <TypeBadge type={project.type} label={project.typeLabel} /> */}
             </div>
             <p className="text-[14px] text-muted leading-[1.65]">
               {project.desc}
@@ -55,22 +65,13 @@ export default function ProjectsSection() {
           </article>
         ))}
       </div>
-    </section>
-  );
-}
-
-function TypeBadge({ type, label }: { type: ProjectType; label: string }) {
-  return (
-    <span
-      className={clsx(
-        "text-[12px] px-2 py-1 rounded border whitespace-nowrap flex-shrink-0",
-        type === "oss" && "border-green text-green",
-        type === "concept" && "border-muted text-muted",
-        type === "commercial" && "border-accent text-accent"
+      {hasMore && (
+        <ExpandToggle
+          expanded={expanded}
+          onToggle={() => setExpanded((value) => !value)}
+          hiddenCount={projects.length - VISIBLE_COUNT}
+        />
       )}
-      style={{ fontFamily: "var(--font-mono)" }}
-    >
-      {label}
-    </span>
+    </section>
   );
 }
