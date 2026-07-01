@@ -21,12 +21,12 @@ const contactItems = [
     href: siteConfig.contacts.githubUrl,
     icon: <GithubIcon />,
   },
-  {
-    label: "Телефон",
-    value: siteConfig.contacts.phone,
-    href: `tel:${siteConfig.contacts.phone.replace(/\s|\(|\)|-/g, "")}`,
-    icon: <PhoneIcon />,
-  },
+  // {
+  //   label: "Телефон",
+  //   value: siteConfig.contacts.phone,
+  //   href: `tel:${siteConfig.contacts.phone.replace(/\s|\(|\)|-/g, "")}`,
+  //   icon: <PhoneIcon />,
+  // },
 ];
 
 export default function ContactSection() {

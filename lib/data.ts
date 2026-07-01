@@ -223,7 +223,7 @@ export const stackGroups = [
   },
 ];
 
-export type ProjectType = "oss" | "concept" | "commercial";
+export type ProjectType = "pet" | "opensource" | "commercial";
 
 export type Project = {
   name: string;
@@ -236,30 +236,22 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  // {
-  //   name: "Cover Letter Generator",
-  //   type: "oss" as ProjectType,
-  //   typeLabel: "Open Source",
-  //   desc: "Chrome-расширение для автогенерации сопроводительных писем. Берёт резюме и вакансию с hh.ru, отправляет в Gemini API, возвращает готовое письмо. Минимальный UI, одна точка входа.",
-  //   tags: ["Chrome Extensions", "Gemini API", "JavaScript"],
-  //   url: "",
-  // },
-  // {
-  //   name: "Setka Autofollower",
-  //   type: "oss" as ProjectType,
-  //   typeLabel: "Open Source",
-  //   desc: "Автоматизация подписок на профессиональной сети setka.ru. Рандомизированные задержки для имитации естественного поведения пользователя.",
-  //   tags: ["Chrome Extensions", "JavaScript", "DOM API"],
-  //   url: "",
-  // },
-  // {
-  //   name: "Setka Autofollower",
-  //   type: "oss" as ProjectType,
-  //   typeLabel: "Open Source",
-  //   desc: "Автоматизация подписок на профессиональной сети setka.ru. Рандомизированные задержки для имитации естественного поведения пользователя.",
-  //   tags: ["Chrome Extensions", "JavaScript", "DOM API"],
-  //   url: "",
-  // },
+  {
+    name: "Cover Letter Generator",
+    type: "pet" as ProjectType,
+    typeLabel: "Open Source",
+    desc: "Chrome-расширение для автогенерации сопроводительных писем. Возвращает готовое сопроводительное письмо на основе резюме и вакансии",
+    tags: ["Chrome Extensions", "AI API", "JavaScript"],
+    image: "/images/projects/cover.webp",
+  },
+  {
+    name: "Autofollower",
+    type: "pet" as ProjectType,
+    typeLabel: "Open Source",
+    desc: "Автоматизация подписок. Рандомизированные задержки для имитации естественного поведения пользователя.",
+    tags: ["Chrome Extensions", "JavaScript", "DOM API"],
+    image: "/images/projects/follower.webp",
+  },
   {
     name: "Twinby",
     type: "commercial",

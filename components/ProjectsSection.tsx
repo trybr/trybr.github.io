@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { projects } from "@/lib/data";
 import { SectionLabel } from "./ExperienceSection";
@@ -8,12 +8,29 @@ import { ExpandToggle } from "./ExpandToggle";
 
 const VISIBLE_COUNT = 6;
 
+type ProjectCategory = "all" | "commercial" | "pet" | "opensource";
+
 export default function ProjectsSection() {
   const [expanded, setExpanded] = useState(false);
-  const hasMore = projects.length > VISIBLE_COUNT;
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+
+  // Фильтрация проектов по категории
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "all") return projects;
+    return projects.filter((project) => project.type === activeCategory);
+  }, [activeCategory]);
+
+  const hasMore = filteredProjects.length > VISIBLE_COUNT;
   const visibleProjects = expanded
-    ? projects
-    : projects.slice(0, VISIBLE_COUNT);
+    ? filteredProjects
+    : filteredProjects.slice(0, VISIBLE_COUNT);
+
+  // Кнопки фильтрации
+  const categories: { id: ProjectCategory; label: string }[] = [
+    { id: "all", label: "Все проекты" },
+    { id: "commercial", label: "Коммерческие" },
+    { id: "pet", label: "Pet-проекты" },
+  ];
 
   return (
     <section id="projects" aria-label="Проекты" className="scroll-mt-6">
@@ -23,6 +40,29 @@ export default function ProjectsSection() {
         стартапах и продуктовых компаниях. Здесь — лишь некоторые проекты,
         которые показывают, как я мыслю, пишу код и решаю задачи.
       </p>
+
+      {/* Фильтры */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => {
+              setActiveCategory(category.id);
+              setExpanded(false); // Сбрасываем раскрытие при смене фильтра
+            }}
+            className={`px-4 py-2 text-sm rounded-full transition-colors duration-200 ${
+              activeCategory === category.id
+                ? "bg-accent text-white"
+                : "bg-surface border border-subtle text-muted hover:border-accent hover:text-foreground"
+            }`}
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Список проектов */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {visibleProjects.map((project) => (
           <article
@@ -37,6 +77,7 @@ export default function ProjectsSection() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  loading="eager"
                 />
               </div>
             )}
@@ -47,6 +88,12 @@ export default function ProjectsSection() {
               >
                 {project.name}
               </h3>
+              {/* Бейдж категории */}
+              <span className="text-xs px-2 py-1 rounded-full bg-subtle/20 text-muted whitespace-nowrap">
+                {project.type === "commercial" && "💼 Коммерческий"}
+                {project.type === "pet" && "🐾 Pet-проект"}
+                {project.type === "opensource" && "🌐 Open Source"}
+              </span>
             </div>
             <p className="text-[14px] text-muted leading-[1.65]">
               {project.desc}
@@ -65,11 +112,25 @@ export default function ProjectsSection() {
           </article>
         ))}
       </div>
+
+      {/* Если нет проектов в выбранной категории */}
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-12 text-muted">
+          <p className="text-lg">Нет проектов в этой категории</p>
+          <button
+            onClick={() => setActiveCategory("all")}
+            className="mt-2 text-accent hover:underline"
+          >
+            Показать все проекты
+          </button>
+        </div>
+      )}
+
       {hasMore && (
         <ExpandToggle
           expanded={expanded}
           onToggle={() => setExpanded((value) => !value)}
-          hiddenCount={projects.length - VISIBLE_COUNT}
+          hiddenCount={filteredProjects.length - VISIBLE_COUNT}
         />
       )}
     </section>
