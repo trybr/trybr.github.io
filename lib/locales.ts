@@ -249,6 +249,11 @@ export const translations = {
       description:
         "Открыт к предложениям о работе, интересным проектам и техническим дискуссиям.",
     },
+
+    expand: {
+      showMore: "Показать ещё",
+      showLess: "Свернуть",
+    },
   },
 
   en: {
@@ -492,6 +497,11 @@ export const translations = {
       phone: "Phone",
       description:
         "Open to job offers, interesting projects and technical discussions.",
+    },
+
+    expand: {
+      showMore: "Show more",
+      showLess: "Collapse",
     },
   },
 };

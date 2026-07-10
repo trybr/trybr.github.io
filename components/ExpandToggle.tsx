@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 type ExpandToggleProps = {
   expanded: boolean;
   onToggle: () => void;
@@ -11,6 +13,12 @@ export function ExpandToggle({
   onToggle,
   hiddenCount,
 }: ExpandToggleProps) {
+  const { t } = useLanguage();
+
+  // Получаем переводы для кнопки
+  const showMore = t.expand?.showMore || "Показать ещё";
+  const showLess = t.expand?.showLess || "Свернуть";
+
   return (
     <button
       type="button"
@@ -19,7 +27,7 @@ export function ExpandToggle({
       className="mt-5 text-[12px] text-accent hover:text-fore transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-md border border-accent bg-accent-dim px-6 py-4"
       style={{ fontFamily: "var(--font-mono)" }}
     >
-      {expanded ? "Свернуть ↑" : `Показать ещё (${hiddenCount}) ↓`}
+      {expanded ? `${showLess} ↑` : `${showMore} (${hiddenCount}) ↓`}
     </button>
   );
 }
