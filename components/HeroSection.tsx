@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { siteConfig, stats } from "@/lib/data";
-
+import { useLanguage } from "@/context/LanguageContext";
 import AnimatedMedia from "@/components/AnimatedMedia";
 
 export default function HeroSection() {
   const [displayed, setDisplayed] = useState("");
-  const fullName = siteConfig.name;
+  const { t, language } = useLanguage();
+
+  // Используем nameEn для английского, name для русского
+  const fullName = language === "en" ? siteConfig.nameEn : siteConfig.name;
 
   useEffect(() => {
     let i = 0;
@@ -24,8 +27,22 @@ export default function HeroSection() {
     return () => clearTimeout(timer);
   }, [fullName]);
 
+  // Получаем локализованные тексты
+  const bio = t.bio;
+  const cms = t.cms;
+  const additional = t.additional;
+  const statsLabels = {
+    years: t.stats.years,
+    projects: t.stats.projects,
+    technologies: t.stats.technologies,
+  };
+
   return (
-    <section id="hero" aria-label="Обо мне" className="scroll-mt-6 max-w-2xl">
+    <section
+      id="hero"
+      aria-label={t.nav.about}
+      className="scroll-mt-6 max-w-2xl"
+    >
       <h1
         className="text-[clamp(36px,5vw,52px)] font-bold leading-[1.05] tracking-[-2px] text-fore"
         style={{ fontFamily: "var(--font-grotesk)" }}
@@ -48,38 +65,45 @@ export default function HeroSection() {
       </div>
 
       <p className="text-base text-muted mt-5 max-w-[480px] leading-[1.75]">
-        {siteConfig.bio}
+        {bio}
       </p>
       <p className="text-base text-muted mt-5 max-w-[480px] leading-[1.75]">
-        {siteConfig.cms}
+        {cms}
       </p>
       <p className="text-base text-muted mt-5 max-w-[480px] leading-[1.75]">
-        {siteConfig.additional}
+        {additional}
       </p>
 
-      <div className="flex gap-4 mt-9">
-        {stats.map((s) => (
-          <div
-            key={s.label}
-            className="flex-1 bg-surface border border-subtle rounded-xl px-5 py-4"
-          >
-            <p
-              className="text-[30px] font-bold text-fore leading-none"
-              style={{ fontFamily: "var(--font-grotesk)" }}
+      <div className="flex gap-4 mt-9 flex-wrap">
+        {stats.map((s, index) => {
+          const labels = [
+            statsLabels.years,
+            statsLabels.projects,
+            statsLabels.technologies,
+          ];
+          return (
+            <div
+              key={s.label}
+              className="flex-1 bg-surface border border-subtle rounded-xl px-5 py-4"
             >
-              {s.num.replace("+", "")}
-              {s.num.includes("+") && (
-                <em className="text-accent not-italic">+</em>
-              )}
-            </p>
-            <p
-              className="text-[9px] text-muted mt-1 tracking-[0.6px] uppercase"
-              style={{ fontFamily: "var(--font-mono)" }}
-            >
-              {s.label}
-            </p>
-          </div>
-        ))}
+              <p
+                className="text-[30px] font-bold text-fore leading-none"
+                style={{ fontFamily: "var(--font-grotesk)" }}
+              >
+                {s.num.replace("+", "")}
+                {s.num.includes("+") && (
+                  <em className="text-accent not-italic">+</em>
+                )}
+              </p>
+              <p
+                className="text-[9px] text-muted mt-1 tracking-[0.6px] uppercase"
+                style={{ fontFamily: "var(--font-mono)" }}
+              >
+                {labels[index] || s.label}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

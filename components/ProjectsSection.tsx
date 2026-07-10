@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import { projects } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { SectionLabel } from "./ExperienceSection";
 import { ExpandToggle } from "./ExpandToggle";
 
@@ -13,8 +14,26 @@ type ProjectCategory = "all" | "commercial" | "pet" | "opensource";
 export default function ProjectsSection() {
   const [expanded, setExpanded] = useState(false);
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
+  const { t } = useLanguage();
 
-  // Фильтрация проектов по категории
+  // Получаем переведённое название проекта
+  const getProjectName = (projectName: string) => {
+    const names = t.projects.names;
+    if (names && names[projectName as keyof typeof names]) {
+      return names[projectName as keyof typeof names];
+    }
+    return projectName;
+  };
+
+  // Получаем переведённое описание проекта
+  const getProjectDesc = (projectName: string, fallback: string) => {
+    const descs = t.projects.descriptions;
+    if (descs && descs[projectName as keyof typeof descs]) {
+      return descs[projectName as keyof typeof descs];
+    }
+    return fallback;
+  };
+
   const filteredProjects = useMemo(() => {
     if (activeCategory === "all") return projects;
     return projects.filter((project) => project.type === activeCategory);
@@ -25,30 +44,37 @@ export default function ProjectsSection() {
     ? filteredProjects
     : filteredProjects.slice(0, VISIBLE_COUNT);
 
-  // Кнопки фильтрации
   const categories: { id: ProjectCategory; label: string }[] = [
-    { id: "all", label: "Все проекты" },
-    { id: "commercial", label: "Коммерческие" },
-    { id: "pet", label: "Pet-проекты" },
+    { id: "all", label: t.projects.all },
+    { id: "commercial", label: t.projects.commercial },
+    { id: "pet", label: t.projects.openSource },
   ];
 
+  const getTypeLabel = (type: string) => {
+    if (type === "commercial") return `💼 ${t.projects.commercial}`;
+    if (type === "pet") return `🐾 ${t.projects.openSource}`;
+    if (type === "opensource") return "🌐 Open Source";
+    return type;
+  };
+
   return (
-    <section id="projects" aria-label="Проекты" className="scroll-mt-6">
-      <SectionLabel>Проекты</SectionLabel>
+    <section
+      id="projects"
+      aria-label={t.projects.title}
+      className="scroll-mt-6"
+    >
+      <SectionLabel>{t.projects.title}</SectionLabel>
       <p className="text-base text-muted mb-7 max-w-[500px] leading-[1.75]">
-        Говорят, портфолио — лицо разработчика. За 7+ лет я работал во фрилансе,
-        стартапах и продуктовых компаниях. Здесь — лишь некоторые проекты,
-        которые показывают, как я мыслю, пишу код и решаю задачи.
+        {t.projects.description}
       </p>
 
-      {/* Фильтры */}
       <div className="flex flex-wrap gap-2 mb-6">
         {categories.map((category) => (
           <button
             key={category.id}
             onClick={() => {
               setActiveCategory(category.id);
-              setExpanded(false); // Сбрасываем раскрытие при смене фильтра
+              setExpanded(false);
             }}
             className={`px-4 py-2 text-sm rounded-full transition-colors duration-200 ${
               activeCategory === category.id
@@ -62,7 +88,6 @@ export default function ProjectsSection() {
         ))}
       </div>
 
-      {/* Список проектов */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {visibleProjects.map((project) => (
           <article
@@ -73,7 +98,7 @@ export default function ProjectsSection() {
               <div className="relative mb-4 aspect-video w-full overflow-hidden rounded-lg">
                 <Image
                   src={project.image}
-                  alt={project.name}
+                  alt={getProjectName(project.name)}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -86,17 +111,14 @@ export default function ProjectsSection() {
                 className="text-[16px] font-semibold text-fore group-hover:text-accent transition-colors duration-200"
                 style={{ fontFamily: "var(--font-grotesk)" }}
               >
-                {project.name}
+                {getProjectName(project.name)}
               </h3>
-              {/* Бейдж категории */}
-              <span className="text-xs px-2 py-1 rounded-full bg-subtle/20 text-muted whitespace-nowrap">
-                {project.type === "commercial" && "💼 Коммерческий"}
-                {project.type === "pet" && "🐾 Pet-проект"}
-                {project.type === "opensource" && "🌐 Open Source"}
+              <span className="project-type text-xs px-2 py-1 rounded-full bg-subtle/20 text-muted whitespace-nowrap xs:hidden">
+                {getTypeLabel(project.type)}
               </span>
             </div>
             <p className="text-[14px] text-muted leading-[1.65]">
-              {project.desc}
+              {getProjectDesc(project.name, project.desc)}
             </p>
             {project.url && (
               <a
@@ -106,22 +128,21 @@ export default function ProjectsSection() {
                 className="inline-flex items-center gap-1.5 mt-3 text-[14px] text-accent hover:underline"
                 style={{ fontFamily: "var(--font-mono)" }}
               >
-                Посмотреть →
+                {t.projects.view}
               </a>
             )}
           </article>
         ))}
       </div>
 
-      {/* Если нет проектов в выбранной категории */}
       {filteredProjects.length === 0 && (
         <div className="text-center py-12 text-muted">
-          <p className="text-lg">Нет проектов в этой категории</p>
+          <p className="text-lg">{t.projects.empty}</p>
           <button
             onClick={() => setActiveCategory("all")}
             className="mt-2 text-accent hover:underline"
           >
-            Показать все проекты
+            {t.projects.showAll}
           </button>
         </div>
       )}

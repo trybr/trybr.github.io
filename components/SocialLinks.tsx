@@ -1,30 +1,51 @@
+"use client";
+
 import { siteConfig } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
+import clsx from "clsx";
 
 type SocialLinksProps = {
   className?: string;
+  showAvailable?: boolean;
 };
 
-export default function SocialLinks({ className }: SocialLinksProps) {
+export default function SocialLinks({
+  className,
+  showAvailable = true,
+}: SocialLinksProps) {
+  const { t } = useLanguage();
+
   return (
-    <div className={className}>
-      <div className="flex gap-3.5 mb-5">
-        <SocialLink href={siteConfig.contacts.telegramUrl} label="Telegram">
+    <div className={clsx(className)}>
+      <div className="flex gap-3.5">
+        <SocialLink
+          href={siteConfig.contacts.telegramUrl}
+          label={t.contact.telegram}
+        >
           <TelegramIcon />
         </SocialLink>
-        <SocialLink href={`mailto:${siteConfig.contacts.email}`} label="Email">
+        <SocialLink
+          href={`mailto:${siteConfig.contacts.email}`}
+          label={t.contact.email}
+        >
           <MailIcon />
         </SocialLink>
-        <SocialLink href={siteConfig.contacts.githubUrl} label="GitHub">
+        <SocialLink
+          href={siteConfig.contacts.githubUrl}
+          label={t.contact.github}
+        >
           <GithubIcon />
         </SocialLink>
       </div>
-      {siteConfig.available && (
+
+      {/* Индикатор доступности */}
+      {showAvailable && siteConfig.available && (
         <div
-          className="flex items-center gap-1.5 text-green text-[10px] tracking-widest"
+          className="flex items-center gap-1.5 text-green text-[10px] tracking-widest mt-3"
           style={{ fontFamily: "var(--font-mono)" }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green animate-pulse2 block" />
-          Открыт к предложениям
+          {t.available}
         </div>
       )}
     </div>

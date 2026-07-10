@@ -2,14 +2,16 @@
 
 import { useActiveSection } from "@/hooks/useActiveSection";
 import SocialLinks from "@/components/SocialLinks";
+import LanguageToggle from "@/components/LanguageToggle";
+import { useLanguage } from "@/context/LanguageContext";
 import clsx from "clsx";
 
 const NAV_ITEMS = [
-  { id: "hero", label: "Обо мне" },
-  { id: "experience", label: "Опыт" },
-  { id: "stack", label: "Стек" },
-  { id: "projects", label: "Проекты" },
-  { id: "contact", label: "Контакты" },
+  { id: "hero", key: "about" },
+  { id: "experience", key: "experience" },
+  { id: "stack", key: "stack" },
+  { id: "projects", key: "projects" },
+  { id: "contact", key: "contact" },
 ] as const;
 
 const SECTION_IDS = NAV_ITEMS.map(({ id }) => id);
@@ -22,14 +24,25 @@ function scrollTo(id: string) {
 
 export default function Sidebar() {
   const active = useActiveSection(SECTION_IDS);
+  const { t } = useLanguage();
 
   return (
     <aside className="w-[230px] min-w-[230px] bg-surface border-r border-subtle flex flex-col py-9 sticky top-0 h-screen">
-      <SocialLinks className="px-6" />
+      {/* Language toggle — top left */}
+      <div className="px-6 mb-5">
+        <LanguageToggle />
+      </div>
+
+      {/* Social links with availability status */}
+      <div className="px-6">
+        <SocialLinks showAvailable={true} />
+      </div>
+
       <div className="h-px bg-subtle mx-6 mb-5 mt-5" />
-      {/* Nav */}
+
+      {/* Navigation */}
       <nav className="flex-1 px-3" aria-label="Навигация по странице">
-        {NAV_ITEMS.map(({ id, label }) => (
+        {NAV_ITEMS.map(({ id, key }) => (
           <button
             key={id}
             onClick={() => scrollTo(id)}
@@ -44,9 +57,8 @@ export default function Sidebar() {
             aria-current={active === id ? "page" : undefined}
           >
             <NavIcon id={id} />
-            {label}
+            {t.nav[key as keyof typeof t.nav]}
 
-            {/* Active indicator bar */}
             {active === id && (
               <span
                 className="ml-auto w-1.5 h-1.5 rounded-full bg-accent block"

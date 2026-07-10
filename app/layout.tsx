@@ -5,6 +5,8 @@ import { siteConfig } from "@/lib/data";
 
 import GridBackground from "@/components/GridBackground";
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export const metadata: Metadata = {
   title: `${siteConfig.nameEn} — ${siteConfig.role}`,
   description: siteConfig.bio,
@@ -57,8 +59,10 @@ export default function RootLayout({
       `}
     >
       <body>
-        <GridBackground /> {/* 3D-сетка как фон */}
-        <main className="relative z-10">{children}</main>
+        {/* <GridBackground /> */}
+        <LanguageProvider>
+          <main className="relative z-10">{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );
