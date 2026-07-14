@@ -67,7 +67,7 @@ body {
 }
 
 /* Для экранов 320px и меньше */
-@media (max-width: 320px) {
+@media (max-width: 360px) {
   .mobile-nav-button {
     font-size: 8px !important;
     padding: 3px 5px !important;
@@ -75,5 +75,15 @@ body {
 
   .project-type {
     display: none;
+  }
+
+  .mobile-nav-items-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .language-toggle {
+ 	padding: 0px;
   }
 }

@@ -28,7 +28,7 @@ export default function MobileNav() {
   return (
     <div className="bg-surface border-b border-subtle">
       {/* Контейнер — на широких экранах всё в строку */}
-      <div className="flex items-center justify-between px-2 py-2 sm:px-3 sm:py-2.5">
+      <div className="flex items-between justify-between px-2 py-2 sm:px-3 sm:py-2.5 w-full mobile-nav-items-wrapper">
         {/* Навигация — слева */}
         <nav
           className="flex gap-0.5 overflow-x-auto sm:gap-1"
@@ -54,14 +54,9 @@ export default function MobileNav() {
         </nav>
 
         {/* Language toggle — справа на широких экранах */}
-        <div className="hidden sm:block flex-shrink-0">
+        <div className="language-toggle flex justify-center align-middle px-2 sm:block">
           <LanguageToggle size="small" />
         </div>
-      </div>
-
-      {/* Language toggle — снизу, справа на маленьких экранах (меньше 640px) */}
-      <div className="flex justify-end px-2 pb-2 sm:hidden">
-        <LanguageToggle size="small" />
       </div>
     </div>
   );
